@@ -26,11 +26,11 @@ To get more insight about customers I extracted more data from JSON files to do 
 >>> access = 'xxxx'
 >>> secret = 'yyyy'
 ````
-I copied file under "s3://olx-bdt-recruit/de/horizontals/" to "s3://olxdata". My output bucket is "s3://shafi-outputs"
+I copied files under "s3://olx-bdt-recruit/de/horizontals/" to "s3://olxdata". My output bucket is "s3://shafi-outputs". Thus, "olxdata" is source bucket and "shafi-outputs" is output bucket.
 ```Python
 >>> loader = EventLoader('olxdata', 'shafi-outputs', access, secret)
 ```
-It is needed to define configuration parameter to control ETL.
+It is needed to define configuration parameter to control ETL. For example, same ETL may be required to run for IOS users instead of android users. So, config parameter should be modified accordingly. Please note that, the config values must be same as the "folder" structure of the source files. 
 
 ```Python
 >>> config = OrderedDict()
@@ -48,9 +48,10 @@ Data extracted from HYDRA events:
         ExecutionTme:24.723 s DataScanned:1862.65 mb
 EVENTS_FORMATTED table partitions refreshed
 DAU data extracted:
-        ExecutionTme:4.151s DataScanned:465.64 mb
+        ExecutionTme:4.151 s DataScanned:465.64 mb
 Partition added to EVENT_DETAILS table
 Event datails extracted:
         ExecutionTme:39.3 s DataScanned:1862.63 mb
 >>>
 ```
+From output query execution time and the size of scanned data could be seen could be seen. 
