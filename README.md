@@ -74,3 +74,4 @@ For task data prodvided for two countries: GH and ZA. To visualize how customers
 
 >>> loader.plot_country('za', za_borders, za_cities)
 ```
+![Alt text](/images/za.jpg?raw=true "Optional Title")
