@@ -17,3 +17,33 @@ Before writing to a path, the path is always cleared to prevent duplicates in ca
 After each query execution a function (waitexecution) checks the query status, and waits until the status changes from "RUNNING" to something else ("SUCCEDED", "FAILED").
 At next step the extracted data (device_id, date, country) queried and aggregated to get number of distinct devices by country. Resultset is stored in the output bucket with prefix "DUA/".
 To get more insight about customers I extracted more data from JSON files to do more analysis. Fields like 'device_id', 'event_time', 'country', 'longitude', 'latitude', 'user_id' extracted from source files, and stored in output bucket with prefix "event_details/". And, to do some visualization the event_details is read as pandas dataframe. It is the slowest part, because in this step it is required to read data from S3 into memory of local host.
+
+````Python
+>>> from eventloader import EventLoader
+>>> from collections import OrderedDict
+>>>
+>>> config = OrderedDict()
+>>> config['brand']   = 'olx'
+>>> config['tracker'] = 'hydra'
+>>> config['channel'] = 'android'
+>>> config['year']    = '2017'
+>>> config['month']   = '08'
+>>> config['day']     = '09'
+>>>
+>>> access = 'xxxx'
+>>> secret = 'yyyy'
+>>>
+>>> loader = EventLoader('olxdata', 'shafi-outputs', access, secret)
+>>>
+>>> loader.load(**config)
+Tables initialized
+Partition added to EVENTS table
+Data extracted from HYDRA events:
+        ExecutionTme:24.723s DataScanned:1862.65 mb
+EVENTS_FORMATTED table partitions refreshed
+DAU data extracted:
+        ExecutionTme:4.151s DataScanned:465.64 mb
+Partition added to EVENT_DETAILS table
+Event datails extracted:
+        ExecutionTme:39.3s DataScanned:1862.63 mb
+>>>
