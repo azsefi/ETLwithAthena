@@ -80,5 +80,7 @@ For task data prodvided for two countries: GH and ZA. To visualize how customers
 >>> gh_cities={'longs' : [-1.630783, -0.140138, -0.848452, -1.94137, -2.5019],
 ...            'lats'  : [6.700071, 5.593222, 9.432919, 7.58617, 10.0607],
 ...            'labels': ['Kumasi', 'Accra', 'Tamale', 'Techiman', 'Wa']}
+
+>>> loader.plot_country('gh', gh_borders, gh_cities)
 ```
 ![gh](./images/gh.png?raw=true "Ghana")
