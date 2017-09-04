@@ -1,3 +1,11 @@
+import boto3
+import time
+from collections import OrderedDict
+import pandas as pd
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+import numpy as np
+
 class EventLoader:
     def __init__(self, source, out, access, secret):
         # output bucket to write result files
@@ -222,6 +230,7 @@ class EventLoader:
                                    Key=self.pathToEventDetails)
 
         self.event_details = pd.read_csv(obj['Body'], nrows=nrows)
+        self.event_details.drop_duplicates(inplace=True)
         
     def load(self, **config):
         # create required table structures
