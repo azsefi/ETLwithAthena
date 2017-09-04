@@ -22,6 +22,17 @@ To get more insight about customers I extracted more data from JSON files to do 
 >>> from eventloader import EventLoader
 >>> from collections import OrderedDict
 >>>
+>>>
+>>> access = 'xxxx'
+>>> secret = 'yyyy'
+````
+I copied file under "s3://olx-bdt-recruit/de/horizontals/" to "s3://olxdata". My output bucket is "s3://shafi-outputs"
+```Python
+>>> loader = EventLoader('olxdata', 'shafi-outputs', access, secret)
+```
+It is needed to define configuration parameter to control ETL.
+
+```Python
 >>> config = OrderedDict()
 >>> config['brand']   = 'olx'
 >>> config['tracker'] = 'hydra'
@@ -30,20 +41,16 @@ To get more insight about customers I extracted more data from JSON files to do 
 >>> config['month']   = '08'
 >>> config['day']     = '09'
 >>>
->>> access = 'xxxx'
->>> secret = 'yyyy'
->>>
->>> loader = EventLoader('olxdata', 'shafi-outputs', access, secret)
->>>
 >>> loader.load(**config)
 Tables initialized
 Partition added to EVENTS table
 Data extracted from HYDRA events:
-        ExecutionTme:24.723s DataScanned:1862.65 mb
+        ExecutionTme:24.723 s DataScanned:1862.65 mb
 EVENTS_FORMATTED table partitions refreshed
 DAU data extracted:
         ExecutionTme:4.151s DataScanned:465.64 mb
 Partition added to EVENT_DETAILS table
 Event datails extracted:
-        ExecutionTme:39.3s DataScanned:1862.63 mb
+        ExecutionTme:39.3 s DataScanned:1862.63 mb
 >>>
+```
