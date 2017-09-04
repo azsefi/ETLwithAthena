@@ -30,7 +30,7 @@ I copied files under "s3://olx-bdt-recruit/de/horizontals/" to "s3://olxdata". M
 ```Python
 >>> loader = EventLoader('olxdata', 'shafi-outputs', access, secret)
 ```
-It is needed to define configuration parameter to control ETL. For example, same ETL may be required to run for IOS users instead of android users. So, config parameter should be modified accordingly. Please note that, the config values must be same as the "folder" structure of the source files. 
+It is needed to define configuration parameter to control ETL. For example, same ETL may be required to run for IOS users instead of android users. So, config parameter should be modified accordingly. Please note that, the config parameter values and the order of the config parameters must be same as the "folder" structure of the source files. 
 
 ```Python
 >>> config = OrderedDict()
