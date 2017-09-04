@@ -58,7 +58,7 @@ From output query execution time and the size of scanned data could be seen.
 EVENT_DETAILS should be read into a pandas dataframe to do some visualizations on it. Because data size can be very big it is recommended to put limit on the number of records to be read.
 
 ```Python
->>> loader.readEventDetails(7000000)
+>>> loader.readEventDetails(1000000)
 ```
 
 For task data prodvided for two countries: GH and ZA. To visualize how customers distributed through the country it is needed to provide country longitudes/latitudes (the postion of low-left, up-right corner of image). Morevover, to see the the points over the country it is required to send a dictionary parameter with longitude, latitude and label information.
