@@ -6,8 +6,8 @@ Task2: Using extracted data calculate distinct device count per country
 
 ### Technology
 
-For these tasks I mainly used AWS Athena. Because Athena is a service there is no need to set up infrastructure to use it. Therefore I preferred using Athena. 
-Athena is AWS service using Presto as backend, which supports ANSI SQL. Pricing of Athena is based on size of processed data. Athena does not keep anything internally - reads from S3 bucket and writes to S3 bucket. Athena executes queries in parallel and scales automatically, so it is fast even with large datasets.
+For these tasks I mainly used AWS Athena. Because Athena is a service there is no need to set up infrastructure to use it. 
+Athena is an AWS service using Presto as backend, which supports ANSI SQL. Pricing of Athena is based on size of processed data. Athena does not keep anything internally - reads from S3 bucket and writes to S3 bucket. Athena executes queries in parallel and scales automatically, so it is fast even with large datasets.
 I used python/boto3 library to call Athena services.
 
 ### Solution
